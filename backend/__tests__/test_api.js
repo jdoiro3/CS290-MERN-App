@@ -53,20 +53,35 @@ describe('Test Model', () => {
   })
 })
 
-/*
-describe('Test Create CRUD Operations', () => {
-  test()
-})
 
-describe('Test Read CRUD Operations', () => {
-  test()
-})
+describe('Test API', () => {
 
-describe('Test Update CRUD Operations', () => {
-  test()
-})
+  test('Test create exercise', async () => {
+    const exercise = {name: 'Bench Press', reps: 6, weight: 120, unit: 'lbs', date: '07-30-21'}
+    await supertest(contr.app).post(contr.API_ENDPOINT)
+      .send(exercise)
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(201)
+      .then(resp => {
+        expect(resp.body).toMatchObject(exercise)
+      })
+    })
 
-describe('Test Delete CRUD Operations', () => {
-  test()
+    test('Test read exercises', async () => {
+      const exercises = [
+        {name: 'Bench Press', reps: 6, weight: 120, unit: 'lbs', date: '07-30-21'},
+        {name: 'Squats', reps: 10, weight: 240, unit: 'lbs', date: '08-30-21'},
+        {name: 'Curls', reps: 8, weight: 30, unit: 'lbs', date: '09-30-21'}
+      ]
+      await model.createExercises(exercises)
+      await supertest(contr.app).get(contr.API_ENDPOINT)
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /json/)
+        .expect(201)
+        .then(resp => {
+          expect(resp.body).toMatchObject(exercises)
+        })
+      })
+
 })
-*/

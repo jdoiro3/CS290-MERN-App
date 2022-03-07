@@ -4,12 +4,13 @@
   "description": "Backend for the exercise MERN app",
   "main": "exercise_api/controller.mjs",
   "scripts": {
-    "test": "jest --config=jest.config.js",
+    "test": "jest --silent --config=jest.config.js",
     "start": "nodemon exercise_api/controller.mjs"
   },
   "author": "Joseph Doiron",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.19.2",
     "express": "^4.17.3",
     "mongoose": "^6.2.2",
     "nodemon": "^2.0.12"

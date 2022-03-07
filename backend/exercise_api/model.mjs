@@ -47,6 +47,13 @@ async function createExercise(query) {
 }
 
 
+async function createExercises(exercises) {
+  for (const exrs of exercises) {
+    await createExercise(exrs)
+  }
+}
+
+
 async function getExercises() {
   return Exercise.find({}).exec()
 }
@@ -64,5 +71,5 @@ async function deleteExercise(_id) {
 
 
 export default { 
-  createExercise, deleteExercise, getExercises, updateExercise, MONGO_CONN
+  createExercise, createExercises, deleteExercise, getExercises, updateExercise, MONGO_CONN
 }
