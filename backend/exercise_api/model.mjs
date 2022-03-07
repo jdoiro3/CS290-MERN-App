@@ -61,7 +61,7 @@ async function getExercises() {
 
 async function updateExercise(query) {
   const { _id, ...updates } = removeUndefined(query)
-  return User.findOneAndUpdate({ _id }, updates, { returnOriginal: false })
+  return Exercise.findOneAndUpdate({ _id }, updates, { returnOriginal: false })
 }
 
 

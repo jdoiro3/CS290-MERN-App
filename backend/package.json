@@ -4,7 +4,7 @@
   "description": "Backend for the exercise MERN app",
   "main": "exercise_api/controller.mjs",
   "scripts": {
-    "test": "jest --silent --config=jest.config.js",
+    "test": "jest --config=jest.config.js",
     "start": "nodemon exercise_api/controller.mjs"
   },
   "author": "Joseph Doiron",
