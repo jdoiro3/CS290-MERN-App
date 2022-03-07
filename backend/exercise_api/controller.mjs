@@ -10,7 +10,6 @@ import model from './model.mjs'
 
 const app = express()
 const PORT = 3000
-const retrieveStats = new model.RetrieveStats()
 
 
 // API endpoints

@@ -46,4 +46,23 @@ async function createExercise(query) {
   return exercise.save()
 }
 
-export default { createExercise }
+
+async function getExercises() {
+  return Exercise.find({}).exec()
+}
+
+
+async function updateExercise(query) {
+  const { _id, ...updates } = removeUndefined(query)
+  return User.findOneAndUpdate({ _id }, updates, { returnOriginal: false })
+}
+
+
+async function deleteExercise(_id) {
+  return Exercise.deleteOne({ _id })
+}
+
+
+export default { 
+  createExercise, deleteExercise, getExercises, updateExercise, MONGO_CONN
+}
