@@ -1,36 +1,36 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
+export default function EditExercisePage({ exerciseToEdit }) {
 
-export default function AddExercisePage() {
-
-    const [name, setName] = useState('')
-    const [unit, setUnit] = useState('lbs')
-    const [date, setDate] = useState('')
-    const [reps, setReps] = useState('')
-    const [weight, setWeight] = useState('')
+    const [name, setName] = useState(exerciseToEdit.name)
+    const [unit, setUnit] = useState(exerciseToEdit.unit)
+    const [date, setDate] = useState(exerciseToEdit.date)
+    const [reps, setReps] = useState(exerciseToEdit.reps)
+    const [weight, setWeight] = useState(exerciseToEdit.weight)
     const navigate = useNavigate();
 
-    async function addExercise() {
-        const newExercise = { name, unit, date, reps, weight }
-        const resp = await fetch('/exercises', {
-            method: 'POST',
-            body: JSON.stringify(newExercise),
+    async function editExercise() {
+        const exercise = { name, unit, date, reps, weight }
+        const resp = await fetch(`/exercises/${exerciseToEdit._id}`, {
+            method: 'PUT',
+            body: JSON.stringify(exercise),
             headers: {
                 'Content-Type': 'application/json',
             },
         })
-        if(resp.status === 201){
-            alert("Successfully added the movie!")
+        console.log(resp)
+        if (resp.status === 201) {
+            alert("Successfully edited the exercise!")
         } else {
-            alert(`Failed to add movie, status code = ${resp.status}`)
+            alert(`Failed to edit the exercise, status code = ${resp.status}`)
         }
         navigate("/")
     }
 
     return (
         <div>
-            <h1>Add Exercise</h1>
+            <h1>Edit Exercise</h1>
             <input
                 type="text"
                 placeholder="Bench Press"
@@ -59,7 +59,7 @@ export default function AddExercisePage() {
                 value={weight}
                 onChange={e => setWeight(e.target.value)} 
             />
-            <button onClick={addExercise}>Add</button>
+            <button onClick={editExercise}>Save</button>
         </div>
-    );
+    )
 }

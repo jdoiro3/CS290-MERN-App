@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
-import { BsPencilSquare } from 'react-icons/bs';
+import { BsPencilSquare } from 'react-icons/bs'
+import { useState } from 'react'
 
-
-function Exercise({ exercise }) {
+function Exercise({ exercise, onEdit, onDelete }) {
 
     return (
         <tr>
@@ -12,7 +11,7 @@ function Exercise({ exercise }) {
             <td>{exercise.reps}</td>
             <td>{exercise.weight}</td>
             <td>
-                <BsPencilSquare />
+                <button onClick={() => onEdit(exercise)} ><BsPencilSquare /></button>
             </td>
         </tr>
     )

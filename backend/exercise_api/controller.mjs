@@ -44,7 +44,7 @@ app.get(API_ENDPOINT, (req, res) => {
 app.put(`${API_ENDPOINT}/:_id`, jsonParser, (req, res) => {
     model.updateExercise({...req.params, ...req.body})
         .then(exercise => {
-            res.status(200).type('json').json(exercise)
+            res.status(201).type('json').json(exercise)
         })
         .catch(error => {
             res.status(400).json({ error })
