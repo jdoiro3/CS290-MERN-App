@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export default function EditExercisePage({ exerciseToEdit }) {
@@ -19,8 +19,7 @@ export default function EditExercisePage({ exerciseToEdit }) {
                 'Content-Type': 'application/json',
             },
         })
-        console.log(resp)
-        if (resp.status === 201) {
+        if (resp.status === 200) {
             alert("Successfully edited the exercise!")
         } else {
             alert(`Failed to edit the exercise, status code = ${resp.status}`)

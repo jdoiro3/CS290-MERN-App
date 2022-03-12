@@ -21,7 +21,7 @@ export default function AddExercisePage() {
             },
         })
         if(resp.status === 201){
-            alert("Successfully added the movie!")
+            alert("Successfully added exercise!")
         } else {
             alert(`Failed to add movie, status code = ${resp.status}`)
         }

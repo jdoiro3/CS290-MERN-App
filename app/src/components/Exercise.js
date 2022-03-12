@@ -1,5 +1,5 @@
 import { BsPencilSquare } from 'react-icons/bs'
-import { useState } from 'react'
+import { MdDeleteOutline } from 'react-icons/md'
 
 function Exercise({ exercise, onEdit, onDelete }) {
 
@@ -12,6 +12,9 @@ function Exercise({ exercise, onEdit, onDelete }) {
             <td>{exercise.weight}</td>
             <td>
                 <button onClick={() => onEdit(exercise)} ><BsPencilSquare /></button>
+            </td>
+            <td>
+                <button onClick={() => onDelete(exercise)} ><MdDeleteOutline /></button>
             </td>
         </tr>
     )

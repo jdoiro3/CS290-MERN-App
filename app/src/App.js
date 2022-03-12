@@ -7,15 +7,21 @@ import React, { useState } from 'react'
 
 function App() {
 
-  const [exerciseToEdit, setExerciseToEdit] = useState([]);
+  const [exerciseToEdit, setExerciseToEdit] = useState([])
+  const [exerciseToDelete, setExerciseToDelete] = useState([])
 
   return (
     <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<HomePage setExerciseToEdit={setExerciseToEdit}/>} />
+            <Route path="/" element={
+              <HomePage setExerciseToEdit={setExerciseToEdit} exerciseToDelete={exerciseToDelete} setExerciseToDelete={setExerciseToDelete} />} 
+            />
             <Route path="/add-exercise" element={<AddExercisePage />} />
-            <Route path="/edit-exercise" element={<EditExercisePage exerciseToEdit={exerciseToEdit} />} />
+            <Route 
+              path="/edit-exercise" 
+              element={<EditExercisePage exerciseToEdit={exerciseToEdit} />} 
+            />
           </Routes>
         </BrowserRouter>
     </div>
