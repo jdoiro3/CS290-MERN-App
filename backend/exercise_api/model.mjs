@@ -69,7 +69,11 @@ async function deleteExercise(_id) {
   return Exercise.deleteOne({ _id })
 }
 
+async function deleteAll() {
+  return Exercise.deleteMany({})
+}
+
 
 export default { 
-  createExercise, createExercises, deleteExercise, getExercises, updateExercise, MONGO_CONN
+  createExercise, createExercises, deleteExercise, deleteAll, getExercises, updateExercise, MONGO_CONN
 }

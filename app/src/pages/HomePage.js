@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import ExerciseCollection from '../components/ExerciseCollection'
 import { useNavigate } from 'react-router-dom'
+import './HomePage.css'
 
 function HomePage({ setExerciseToEdit, exerciseToDelete, setExerciseToDelete }) {
 
@@ -15,7 +16,11 @@ function HomePage({ setExerciseToEdit, exerciseToDelete, setExerciseToDelete }) 
     return (
         <>
             <h2>List of Exercises</h2>
-            <ExerciseCollection onEdit={onEdit}></ExerciseCollection>
+            <div className="container">
+                <div className="exercises-container">
+                    <ExerciseCollection onEdit={onEdit}></ExerciseCollection>
+                </div>
+            </div>
             <Link to="/add-exercise">Add an Exercise</Link>
         </>
     );

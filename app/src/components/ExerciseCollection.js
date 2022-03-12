@@ -1,5 +1,8 @@
 import Exercise from './Exercise'
 import { useState, useEffect } from 'react'
+import Table from 'react-bootstrap/Table'
+import Dropdown from 'react-bootstrap/Dropdown'
+import './ExerciseCollection.css'
 
 function ExerciseCollection({ onEdit }) {
 
@@ -9,6 +12,19 @@ function ExerciseCollection({ onEdit }) {
         const resp = await fetch('/exercises')
         const exercises = await resp.json()
         setExercises(exercises)
+    }
+
+    async function deleteAll() {
+        const resp = await fetch("/exercises/deleteAll", { 
+            method: 'DELETE'
+            }
+        )
+        if (resp.status === 204) {
+            alert("Successfully Deleted all exercises!")
+        } else {
+            alert(`Failed to delete, status code = ${resp.status}`)
+        }
+        loadExercises()
     }
 
     async function deleteExercise(exercise) {
@@ -21,7 +37,6 @@ function ExerciseCollection({ onEdit }) {
         } else {
             alert(`Failed to Delete the exercise, status code = ${resp.status}`)
         }
-        window.location.reload()
     }
 
     const onDelete = async (exercise) => {
@@ -34,21 +49,34 @@ function ExerciseCollection({ onEdit }) {
     }, [])
     
     return (
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Unit</th>
-                    <th>Date</th>
-                    <th>Reps</th>
-                    <th>Weight</th>
-                </tr>
-            </thead>
-            <tbody>
-                {exercises.map((exrs, i) => <Exercise exercise={exrs} key={i} onEdit={onEdit} onDelete={onDelete} />)}
-            </tbody>
-        </table>
-    );
+        <div>
+            <Dropdown className="table-dropdown">
+                <Dropdown.Toggle variant="success" id="Dropdown-basic">
+                    Actions
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                    <Dropdown.Item href="/add-exercise">Add Exercise</Dropdown.Item>
+                    <Dropdown.Item onClick={() => deleteAll()}>Delete All</Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
+            <Table className="exercise-table" striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Unit</th>
+                        <th>Date</th>
+                        <th>Reps</th>
+                        <th>Weight</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {exercises.map((exrs, i) => <Exercise exercise={exrs} key={i} onEdit={onEdit} onDelete={onDelete} />)}
+                </tbody>
+            </Table>
+        </div>
+    )
 }
 
 export default ExerciseCollection;

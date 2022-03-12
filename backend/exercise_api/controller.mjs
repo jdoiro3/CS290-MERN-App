@@ -51,16 +51,25 @@ app.put(`${API_ENDPOINT}/:_id`, jsonParser, (req, res) => {
         })
 })
 
-
-app.delete(`${API_ENDPOINT}/:_id`, (req, res) => {
-    console.log(req.params)
-    model.deleteExercise(req.params._id)
-        .then(res.status(204).send())
+app.delete(`${API_ENDPOINT}/deleteAll`, (req, res) => {
+    model.deleteAll()
+        .then(
+            res.status(204).send()
+        )
         .catch(error => {
             res.status(400).json({ error })
         })
 })
 
+app.delete(`${API_ENDPOINT}/:_id`, (req, res) => {
+    model.deleteExercise(req.params._id)
+        .then(
+            res.status(204).send()
+        )
+        .catch(error => {
+            res.status(400).json({ error })
+        })
+})
 
 let server = app.listen(PORT, () => {
     console.log(`REST API listening at http://localhost:${PORT}...`);

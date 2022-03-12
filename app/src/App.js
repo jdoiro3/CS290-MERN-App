@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from './pages/HomePage';
 import AddExercisePage from './pages/AddExercisePage';
 import EditExercisePage from './pages/EditExercisePage';
-import React, { useState } from 'react'
+import { useState } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 

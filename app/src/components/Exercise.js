@@ -1,5 +1,6 @@
 import { BsPencilSquare } from 'react-icons/bs'
 import { MdDeleteOutline } from 'react-icons/md'
+import Button from 'react-bootstrap/Button'
 
 function Exercise({ exercise, onEdit, onDelete }) {
 
@@ -11,10 +12,10 @@ function Exercise({ exercise, onEdit, onDelete }) {
             <td>{exercise.reps}</td>
             <td>{exercise.weight}</td>
             <td>
-                <button onClick={() => onEdit(exercise)} ><BsPencilSquare /></button>
+                <Button variant="primary" onClick={() => onEdit(exercise)} ><BsPencilSquare /></Button>
             </td>
             <td>
-                <button onClick={() => onDelete(exercise)} ><MdDeleteOutline /></button>
+                <Button variant="danger" onClick={() => onDelete(exercise)} ><MdDeleteOutline /></Button>
             </td>
         </tr>
     )

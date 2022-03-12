@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.exercises-container {
+    width: 50vw !important;
+}
+
+.table-dropdown {
+    text-align: left;
+    margin-bottom: 3vh;
+}
