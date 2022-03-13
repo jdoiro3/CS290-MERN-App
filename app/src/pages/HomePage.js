@@ -19,9 +19,9 @@ function HomePage({ setExerciseToEdit, exerciseToDelete, setExerciseToDelete }) 
             <div className="container">
                 <div className="exercises-container">
                     <ExerciseCollection onEdit={onEdit}></ExerciseCollection>
+                    <Link to="/add-exercise">Add an Exercise</Link>
                 </div>
             </div>
-            <Link to="/add-exercise">Add an Exercise</Link>
         </>
     );
 }

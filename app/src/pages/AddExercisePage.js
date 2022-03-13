@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import "./AddExercisePage.css"
 
 export default function AddExercisePage() {
 
@@ -31,35 +33,56 @@ export default function AddExercisePage() {
     return (
         <div>
             <h1>Add Exercise</h1>
-            <input
-                type="text"
-                placeholder="Bench Press"
-                value={name}
-                onChange={e => setName(e.target.value)} 
-            />
-            <select value={unit} onChange={e => setUnit(e.target.value)}>
-                <option value="lbs">lbs</option>
-                <option value="kgs">kgs</option>
-            </select>
-            <input
-                type="date"
-                placeholder="MM-DD-YYYY"
-                value={date}
-                onChange={e => setDate(e.target.value)} 
-            />
-            <input
-                type="number"
-                placeholder="0"
-                value={reps}
-                onChange={e => setReps(e.target.value)} 
-            />
-            <input
-                type="number"
-                placeholder="0"
-                value={weight}
-                onChange={e => setWeight(e.target.value)} 
-            />
-            <button onClick={addExercise}>Add</button>
+            <div className="container">
+                <Form className="Form">
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control 
+                            type="text" 
+                            placeholder="Bench Press" 
+                            value={name}
+                            onChange={e => setName(e.target.value)} 
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Unit</Form.Label>
+                        <Form.Select aria-label="Default select example" value={unit} onChange={e => setUnit(e.target.value)}>
+                            <option value="lbs">lbs</option>
+                            <option value="kgs">kgs</option>
+                        </Form.Select>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Date</Form.Label>
+                        <Form.Control 
+                            type="date"
+                            placeholder="MM-DD-YYYY"
+                            value={date}
+                            onChange={e => setDate(e.target.value)} 
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Reps</Form.Label>
+                        <Form.Control 
+                            type="number"
+                            placeholder="0"
+                            value={reps}
+                            onChange={e => setReps(e.target.value)} 
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Weight</Form.Label>
+                        <Form.Control 
+                            type="number"
+                            placeholder="0"
+                            value={weight}
+                            onChange={e => setWeight(e.target.value)} 
+                        />
+                    </Form.Group>
+                    <Button onClick={() => addExercise()} type="button" variant="primary">
+                        Add
+                    </Button>
+                </Form>
+            </div>
         </div>
-    );
+    )
 }
